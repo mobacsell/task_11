@@ -23,8 +23,10 @@ document.getElementById('btnEqual').addEventListener('click', function () {
 });
 
 function startNewGame() {
-    minValue = parseInt(prompt('Минимальное знание числа для игры','0')),
-    maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+    minValue = parseInt(prompt('Минимальное знание числа для игры','0')) || 0;
+    minValue = (minValue < -999) ? -999 : minValue; 
+    maxValue = parseInt(prompt('Максимальное знание числа для игры','100')) || 100;
+    maxValue = (maxValue > 999) ? 999 : maxValue;
 
     answerNumber  = Math.floor((minValue + maxValue) / 2);
     orderNumber = 1;
