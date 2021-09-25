@@ -17,25 +17,23 @@ document.getElementById('btnLess').addEventListener('click', getNextAnswer);
 
 document.getElementById('btnEqual').addEventListener('click', function () {
     if (gameRun) {
-        answerField.innerText = `Я всегда угадываю\n\u{1F60E}`
+        answerField.innerText = getRandomWinMessage();
         gameRun = false;
     }
 });
 
 function startNewGame() {
-    if (!gameRun) {
-        minValue = parseInt(prompt('Минимальное знание числа для игры','0')),
-        maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+    minValue = parseInt(prompt('Минимальное знание числа для игры','0')),
+    maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
 
-        answerNumber  = Math.floor((minValue + maxValue) / 2);
-        orderNumber = 1;
-        gameRun = true;
+    answerNumber  = Math.floor((minValue + maxValue) / 2);
+    orderNumber = 1;
+    gameRun = true;
 
-        alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
+    alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
 
-        answerField.textContent = getRandomAnswer();
-        orderNumberField.innerText = orderNumber;
-    }
+    answerField.textContent = getRandomAnswer();
+    orderNumberField.innerText = orderNumber;
 }
 
 function getNextAnswer(btn) {
@@ -84,7 +82,27 @@ function getRandomAnswer() {
     return questionPhrase;
 }
 
+function getRandomWinMessage() {
+    let phraseRandom = Math.round(Math.random() * 3);
+    let questionPhrase;
 
+    switch (phraseRandom) {
+        case 0:
+            questionPhrase = `Я всегда угадываю\n\u{1F60E}`;
+            break;
+        case 1:
+            questionPhrase = `Я мастер-угадастер\n\u{1F60E}`;
+            break;
+        case 2:
+            questionPhrase = `Кто молодец? Я молодец\n\u{1F60E}`;
+            break;
+        case 3:
+            questionPhrase = `Это было просто\n\u{1F60E}`;
+            break;
+    }
+
+    return questionPhrase;
+}
 
 
 
