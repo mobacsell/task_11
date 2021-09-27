@@ -1,7 +1,12 @@
 'use strict'
 
 const   orderNumberField = document.getElementById('orderNumberField'),
-        answerField = document.getElementById('answerField');
+        answerField = document.getElementById('answerField'),
+        firstModal = document.getElementById('firstModal'),
+        secondModal = document.getElementById('secondModal'),
+        secondModalText = document.getElementById('secondModalText'),
+        containerGame = document.querySelector('.container');
+
 
 let gameRun, minValue, maxValue, answerNumber, orderNumber;
 
@@ -24,19 +29,31 @@ document.getElementById('btnEqual').addEventListener('click', function () {
 
 //Функция startNewGame реализует функционал запуска игры и первого ответа.
 function startNewGame() {
-    minValue = parseInt(prompt('Минимальное знание числа для игры','0')) || 0;
-    minValue = (minValue < -999) ? -999 : minValue; 
-    maxValue = parseInt(prompt('Максимальное знание числа для игры','100')) || 100;
-    maxValue = (maxValue > 999) ? 999 : maxValue;
-
-    answerNumber  = Math.floor((minValue + maxValue) / 2);
-    orderNumber = 1;
     gameRun = true;
+    firstModal.style.display = 'block';
+    secondModal.style.display = 'none';
+    containerGame.style.display = 'none';
 
-    alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
-
-    answerField.textContent = getRandomAnswer();
-    orderNumberField.textContent = orderNumber;
+    document.getElementById('modalBtnNext').addEventListener('click', function (event) {
+        minValue = parseInt(document.getElementById('minValue').value) || 0;
+        minValue = (minValue < -999) ? -999 : minValue; 
+        maxValue = parseInt(document.getElementById('maxValue').value) || 100;
+        maxValue = (maxValue > 999) ? 999 : maxValue;
+    
+        firstModal.style.display = 'none';
+        secondModal.style.display = 'block';
+        secondModalText.textContent = `Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю!`;
+    }); 
+    
+    document.getElementById('modalBtnStart').addEventListener('click', function (event) {
+        answerNumber  = Math.floor((minValue + maxValue) / 2);
+        orderNumber = 1;
+        answerField.textContent = getRandomAnswer();
+        orderNumberField.textContent = orderNumber;
+        
+        secondModal.style.display = 'none';
+        containerGame.style.display = 'block';
+    });    
 }
 
 //Функция getNextAnswer реализует функционал последующего поиска числа (при нажатии кнопок <Больше> или <Меньше>)

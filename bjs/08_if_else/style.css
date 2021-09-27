@@ -1,14 +1,34 @@
+#firstModal     {
+    display: block;
+}
+
+#secondModal  {
+    display: none;
+}
+
+.modal-header, .modal-body, .modal-footer    {
+    justify-content: center;
+}
+
+#modalTextBody  {
+    padding-left: 10px;
+}
+
+.container {
+    display: none;
+}
+
 .game-card {
     height: 100vh;
     font-family: 'Open Sans', monospace;
 }
 
-#btnLess, #btnOver {
+#btnLess, #btnOver, #modalBtnNext, #modalBtnStart {
     background-color: #fff;
     color: #44942b;
     border: 1px solid #44942b;
 }
-#btnLess:hover, #btnOver:hover {
+#btnLess:hover, #btnOver:hover, #modalBtnNext:hover, #modalBtnStart:hover {
     box-shadow: inset 0 0 15px #44942b;
     outline: none;
 }
@@ -24,14 +44,18 @@
     outline: none;
 }
 
-.card-header    {
+.card-header, .modal-header    {
     color: #ff4828;
 }
 
-#answerField    {
+#answerField, .modal-body    {
     color: #44942b;
 }
 
 #btnRetry   {
     color: #44942b;
+}
+
+.card-header, .modal-header, .card-footer, .modal-footer {
+    background-color: #ebfaedaa;
 }

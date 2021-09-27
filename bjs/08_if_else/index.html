@@ -9,9 +9,49 @@
     <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
 <body>
+<div class="modal" id="firstModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Игра "Угадай число!"</h5>
+            </div>
+            <div class="modal-body">
+                <p id="modalTextBody">Укажите необходимые параметры:</p>
+                <form>
+                    <div class="form-group">
+                        <input class="form-control form-control-sm" id="minValue" type="text" placeholder="Минимальное значение числа для игры">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control form-control-sm" id="maxValue" type="text" placeholder="Максимальное значение числа для игры">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="modalBtnNext">Далее</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="secondModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Игра "Угадай число!"</h5>
+            </div>
+            <div class="modal-body">
+                <p class="text-center" id="secondModalText">Загадайте любое целое число от до, а я его угадаю!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" id="modalBtnStart">Начать игру!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row game-card align-items-center">
-        <div class="col col-md-6 offset-md-2">
+        <div class="col-md-3 col-md-6 offset-md-3">
             <div class="card text-center">
                 <div class="card-header">
                     <p class="m-0">Вопрос №<span id="orderNumberField">5</span></p>
